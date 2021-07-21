@@ -196,8 +196,10 @@ subtask(TASK_TEST_RUN_MOCHA_TESTS).setAction(
       hre.config.mocha = mochaConfig;
       resolvedQualifiedNames = await hre.artifacts.getAllFullyQualifiedNames();
     }
-
-    return runSuper();
+    
+    if (!options.preventCallback) {
+       return runSuper();
+    }
   }
 );
 
